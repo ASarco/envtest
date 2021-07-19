@@ -9,12 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class EnvtestApplicationTests {
 
-
 	@Value("${DOG_NAME:}")
 	private String dogName;
-
-	@Value("${CAT_NAME:}")
-	private String catName;
 
 	@Test
 	void contextLoads() {
@@ -25,6 +21,7 @@ class EnvtestApplicationTests {
 				.hasSize(8)
 				.isEqualTo("Cocolulu");
 
+		String catName = System.getenv("CAT_NAME");
 		assertThat(catName)
 				.as("The cat name is Chocha")
 				.isNotBlank()
